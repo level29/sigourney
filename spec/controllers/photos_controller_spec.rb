@@ -24,11 +24,11 @@ RSpec.describe PhotosController, type: :controller do
   # Photo. As you add validations to Photo, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {title: "My Photo"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {title: ""}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +103,14 @@ RSpec.describe PhotosController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {title: "New photo!"}
       }
 
       it "updates the requested photo" do
         photo = Photo.create! valid_attributes
         put :update, params: {id: photo.to_param, photo: new_attributes}, session: valid_session
         photo.reload
-        skip("Add assertions for updated state")
+        expect(photo.title).to eq("New photo!")
       end
 
       it "assigns the requested photo as @photo" do
